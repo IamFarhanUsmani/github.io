@@ -126,23 +126,30 @@
     }; // end ssMobileMenu
 
     document.addEventListener("DOMContentLoaded", function() {
-        const audioContainer = document.querySelector('.s-intro__audio');
-        const audioPlayer = document.getElementById('audioPlayer');
-    
-        audioContainer.addEventListener('click', function() {
-            if (audioPlayer.paused) {
-                audioPlayer.play().then(() => {
-                    console.log('Audio is playing');
-                }).catch(function(error) {
-                    console.error('Playback failed:', error);
-                });
-                audioContainer.classList.add('playing');
-            } else {
-                audioPlayer.pause();
-                audioContainer.classList.remove('playing');
-            }
-        });
+    const audioContainer = document.querySelector('.s-intro__audio');
+    const audioPlayer = document.getElementById('audioPlayer');
+
+    // Function to play or pause the audio
+    function toggleAudio() {
+        if (audioPlayer.paused) {
+            audioPlayer.play().catch(function(error) {
+                console.error('Playback failed:', error);
+            });
+            audioContainer.classList.add('playing');
+        } else {
+            audioPlayer.pause();
+            audioContainer.classList.remove('playing');
+        }
+    }
+
+    // Add event listeners for both click and touchstart
+    audioContainer.addEventListener('click', toggleAudio);
+    audioContainer.addEventListener('touchstart', function(event) {
+        event.preventDefault();  // Prevent default behavior to avoid long press issues
+        toggleAudio();
     });
+});
+
     
 
 
