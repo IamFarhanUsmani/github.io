@@ -131,7 +131,11 @@
     
         audioContainer.addEventListener('click', function() {
             if (audioPlayer.paused) {
-                audioPlayer.play();
+                audioPlayer.play().then(() => {
+                    console.log('Audio is playing');
+                }).catch(function(error) {
+                    console.error('Playback failed:', error);
+                });
                 audioContainer.classList.add('playing');
             } else {
                 audioPlayer.pause();
