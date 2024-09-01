@@ -59,8 +59,45 @@
                 </div>
             </section>
         </section>
+        <div id="ios-popup" class="popup">
+            <div class="popup-content">
+                <span id="close-popup" class="close">&times;</span>
+                <h2>Welcome iOS User!</h2>
+                <p>This is a special message just for you.</p>
+            </div>
+        </div>
         <!-- Scripts -->
         <script src="plugins.js" defer></script>
         <script src="main.js" defer></script>
+        <script>
+            // Function to detect iOS devices
+            function isIOS() {
+                return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            }
+        
+            // Function to show the popup if the user is on an iOS device
+            function showIOSPopup() {
+                if (isIOS()) {
+                    var popup = document.getElementById("ios-popup");
+                    popup.style.display = "block";
+        
+                    var closeBtn = document.getElementById("close-popup");
+                    closeBtn.onclick = function() {
+                        popup.style.display = "none";
+                    };
+        
+                    // Close the popup if the user clicks outside of it
+                    window.onclick = function(event) {
+                        if (event.target === popup) {
+                            popup.style.display = "none";
+                        }
+                    };
+                }
+            }
+        
+            // Call the function to show the popup
+            showIOSPopup();
+        </script>
+                
     </body>
 </html>
