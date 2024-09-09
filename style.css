@@ -1,0 +1,294 @@
+/* General styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('bg-2.jpg'); /* Desktop background image */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Image Styling (with button-like appearance) */
+.image-wrapper {
+    position: relative;
+    width: 300px; /* Define a fixed width for the square (adjust as needed) */
+    height: 300px; /* Define a fixed height for the square (same as width for a square) */
+    overflow: hidden; /* Ensure the image doesn't overflow the container */
+    display: flex;
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
+    /* background-color: #f0f0f0;  Optional: Placeholder background color when no image */
+}
+
+.image-wrapper img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover; /* Ensures the image covers the square without distortion */
+    display: block;
+}
+
+/* Episode title styling */
+.episode-title {
+    font-family: 'Roboto', sans-serif; /* Sleek font style */
+    font-size: 24px; /* Default font size */
+    font-weight: bold;
+    margin-bottom: 10px; /* Space below the title */
+    position: relative;
+    display: block;
+    margin-top: 20px; /* Adjust distance from the image */
+    background: transparent; /* Transparent background */
+    color: #fff; /* White text color */
+}
+
+/* For desktop screens */
+.swiper-container {
+    margin-top: 200px; /* Add space above the carousel */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    body {
+        background-image: url('mb-2.jpg'); /* Mobile background image */
+        background-size: cover; /* Change to cover to ensure it fills the viewport without distortion */
+        background-position: center;
+        height: auto; /* Change to auto to allow content to define the height */
+        min-height: 100vh; /* Ensure it still takes up the full viewport height */
+        overflow-y: auto; /* Allow vertical scrolling if content overflows */
+    }
+
+    .episode-title {
+        font-size: 18px; /* Slightly smaller font size for tablets */
+    }
+
+    .swiper-container {
+        margin-top: 150px; /* Adjust for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .episode-title {
+        font-size: 14px; 
+    }
+
+    .audio-bar {
+        width: 70%; /* Ensure it stays within the image container */
+        height: 2px; 
+        bottom: 8px;
+    }
+}
+
+
+
+/* Swiper Container */
+.swiper-container {
+    width: 100%;
+    height: 400px; /* Adjust height if needed */
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Swiper Wrapper */
+.swiper-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Swiper Slide */
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    width: auto;
+    transition: transform 0.5s, filter 0.5s, opacity 0.5s;
+    opacity: 0.5; /* Default opacity for non-active slides */
+    filter: blur(2px); /* Default blur for non-active slides */
+    transform: scale(0.8); /* Shrink non-active slides */
+}
+
+/* Active slide (no blur, full opacity, larger size) */
+.swiper-slide-active {
+    filter: none;         /* Remove blur */
+    opacity: 1;           /* Full opacity */
+    transform: scale(1); /* Slightly enlarge the active slide */
+    z-index: 2;           /* Ensure it appears above the others */
+    background: rgb(0,0,0,0.0);
+}
+
+.swiper-slide img {
+    max-width: 100%;
+    height: 250px;
+    cursor: pointer;
+    border-radius: 8px; /* Rounded corners for button effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Button shadow */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Click effect for images */
+.swiper-slide img:active {
+    transform: scale(0.95); /* Slightly shrink the image on click */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Change shadow for a pressed effect */
+}
+
+/* Sleek Audio Bar */
+.audio-bar {
+    position: relative;
+    bottom: 1px; /* Distance from the bottom of the image */
+    left: 48%;
+    transform: translateX(-50%);
+    width: 70%; /* Adjust width to fit within the image */
+    height: 2px; /* Slimmer bar */
+    background-color: #fff;
+    border-radius: 2px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Slider Thumb Styling */
+.audio-bar input[type="range"] {
+    width: 70%;
+    height: 2px;
+    background: #ffffff; /* Your custom color */
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Thumb (Clickable knob) */
+.audio-bar input[type="range"]::-webkit-slider-thumb,
+.audio-bar input[type="range"]::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    background: #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    appearance: none; /* Remove default styling */
+}
+
+.audio-bar input[type="range"]::-webkit-slider-runnable-track,
+.audio-bar input[type="range"]::-moz-range-track {
+    height: 2px;
+    background: #ffffff; /* White color for the track */
+    border-radius: 2px;
+}
+
+/* Click effect for the audio bar */
+.audio-bar-clicked {
+    background-color: rgb(255, 255, 255); /* Slight color change */
+    transition: background-color 0.2s;
+    box-shadow: 0 0 10px rgb(255, 255, 255); /* Highlight effect */
+}
+
+.audio-container {
+    position: absolute;
+    bottom: 60px; /* Distance from the bottom of the image */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    width: calc(100% - 20px); /* Ensure the container fits within the image */
+    padding: 0 10px;
+}
+
+.audio-time {
+    font-size: 8px;
+    color: #fff;
+    width: 20px; /* Adjust width to accommodate time text */
+    text-align: center;
+}
+
+.audio-bar-container {
+    display: flex;
+    flex-grow: 1; /* Allows the audio bar to expand */
+    align-items: center;
+    margin: 0 5px; /* Adjust margin to increase space between time elements and audio bar */
+}
+
+.audio-bar {
+    flex-grow: 1;
+}
+
+.audio-icon {
+    position: absolute;
+    top: 85%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center icon perfectly */
+    font-size: 24px; /* Size of the icon */
+    color: #fff; /* Icon color */
+    z-index: 15; /* Ensure the icon appears above the image */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: opacity 0.2s; /* Smooth transition for visibility */
+}
+
+.image-wrapper:hover .audio-icon {
+    opacity: 1; /* Show icon on hover */
+}
+
+/* Initially show the icon */
+.audio-icon {
+    opacity: 1;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .audio-bar {
+        width: 70%; /* Slightly increase width for better visibility */
+        height: 2px; /* Keep the same height */
+    }
+
+    .audio-container {
+        bottom: 50px; /* Adjust distance from the bottom for tablets */
+        width: calc(100% - 30px); /* Adjust container width */
+    }
+
+    .audio-time {
+        font-size: 7px; /* Slightly smaller font for time */
+    }
+
+    .audio-icon {
+        font-size: 20px; /* Slightly smaller icon */
+        top: 20%; /* Adjust vertical position */
+    }
+}
+
+@media (max-width: 480px) {
+    .audio-bar {
+        width: 70%; /* Maximize width within the image */
+        height: 2px; /* Keep height the same */
+    }
+
+    .audio-container {
+        bottom: 60px; /* Adjust distance from the bottom for smaller screens */
+        width: calc(100% - 20px); /* Adjust container width for mobile */
+    }
+
+    .audio-time {
+        font-size: 6px; /* Smaller font size for time on mobile */
+    }
+
+    .audio-icon {
+        font-size: 18px; /* Smaller icon */
+        top: 85%; /* Adjust vertical position */
+    }
+}
+
+
+/* Navigation Buttons */
+.swiper-button-next, .swiper-button-prev {
+    background-color: rgb(255, 255, 255);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    top: 65%; /* Adjust this value to bring the buttons lower */
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+    font-size: 20px;
+}
