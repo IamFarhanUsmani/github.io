@@ -1,0 +1,308 @@
+/* General styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('bg-2.jpg'); /* Desktop background image */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Image Styling (with button-like appearance) */
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 60%; /* Ensure wrapper takes full width */
+    max-width: 100%; /* Prevent overflow */
+}
+
+.image-wrapper img {
+    width: 100%; /* Image takes full width of the container */
+    height: 100%; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure image covers the container without distortion */
+    aspect-ratio: 1 / 1; 
+}
+
+/* Episode title styling */
+.episode-title {
+    font-family: 'Roboto', sans-serif; /* Sleek font style */
+    font-size: 24px; /* Default font size */
+    font-weight: bold;
+    margin-bottom: 10px; /* Space below the title */
+    position: absolute;
+    top: 10px; /* Distance from the top of the container */
+    left: 20px; /* Distance from the left of the container */
+    background: rgba(0, 0, 0, 0.0); /* Transparent background */
+    color: #fff; /* White text color */
+    padding: 5px 10px; /* Padding around the text */
+    border-radius: 5px; /* Rounded corners */
+    z-index: 10; /* Ensure the title appears above the image */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    body {
+        background-image: url('mb-2.jpg'); /* Mobile background image */
+        background-size: cover; /* Change to cover to ensure it fills the viewport without distortion */
+        background-position: center;
+        height: auto; /* Change to auto to allow content to define the height */
+        min-height: 100vh; /* Ensure it still takes up the full viewport height */
+        overflow-y: auto; /* Allow vertical scrolling if content overflows */
+    }
+
+    .episode-title {
+        font-size: 14px; /* Slightly smaller font size for tablets */
+        top: 10px; /* Increase distance from the top for better readability */
+        left: 10px; /* Increase distance from the left for better alignment */
+        padding: 6px 10px; /* Adjust padding for a balanced appearance */
+        background: rgba(0, 0, 0, 0.7); /* Add a semi-transparent background for readability */
+        border-radius: 5px; /* Keep the corners rounded for a modern look */
+        max-width: calc(100% - 20px); /* Ensure it doesn’t overflow the container */
+        white-space: nowrap; /* Prevent text from wrapping */
+        overflow: hidden;
+        text-overflow: ellipsis; /* Handle overflow with ellipsis */
+    }
+
+    .swiper-slide img {
+        width: 200px; /* Set width to 150px */
+        height: 200px; /* Set height to 150px */
+        object-fit: contain; /* Ensure the image covers the container without distortion */
+        border-radius: 8px; /* Maintain rounded corners */
+    }
+}
+
+@media (max-width: 480px) {
+    .swiper-slide img {
+        width: 200px; /* Keep width at 150px */
+        height: 200px; /* Keep height at 150px */
+        border-radius: 8px;
+        object-fit: contain;
+    }
+
+    .episode-title {
+        font-size: 12px; 
+        padding: 3px 6px;
+        max-width: 140px; /* Ensure the title fits within the image */
+    }
+
+    .audio-bar {
+        width: 90%; /* Ensure it stays within the image container */
+        height: 2px; 
+        bottom: 8px;
+    }
+}
+
+
+
+/* Swiper Container */
+.swiper-container {
+    width: 100%;
+    height: 400px; /* Adjust height if needed */
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Swiper Wrapper */
+.swiper-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Swiper Slide */
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    width: auto;
+    transition: transform 0.5s, filter 0.5s, opacity 0.5s;
+    opacity: 0.5; /* Default opacity for non-active slides */
+    filter: blur(2px); /* Default blur for non-active slides */
+    transform: scale(0.8); /* Shrink non-active slides */
+}
+
+/* Active slide (no blur, full opacity, larger size) */
+.swiper-slide-active {
+    filter: none;         /* Remove blur */
+    opacity: 1;           /* Full opacity */
+    transform: scale(1); /* Slightly enlarge the active slide */
+    z-index: 2;           /* Ensure it appears above the others */
+    background: rgba(239, 239, 239, 0.0);
+}
+
+.swiper-slide img {
+    max-width: 100%;
+    height: 250px;
+    cursor: pointer;
+    border-radius: 8px; /* Rounded corners for button effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Button shadow */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Click effect for images */
+.swiper-slide img:active {
+    transform: scale(0.95); /* Slightly shrink the image on click */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Change shadow for a pressed effect */
+}
+
+/* Sleek Audio Bar */
+.audio-bar {
+    position: relative;
+    bottom: 1px; /* Distance from the bottom of the image */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%; /* Adjust width to fit within the image */
+    height: 2px; /* Slimmer bar */
+    background-color: #fff;
+    border-radius: 2px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Slider Thumb Styling */
+.audio-bar input[type="range"] {
+    width: 100%;
+    height: 2px;
+    background: #ffffff; /* Your custom color */
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Thumb (Clickable knob) */
+.audio-bar input[type="range"]::-webkit-slider-thumb,
+.audio-bar input[type="range"]::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    background: #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+    appearance: none; /* Remove default styling */
+}
+
+.audio-bar input[type="range"]::-webkit-slider-runnable-track,
+.audio-bar input[type="range"]::-moz-range-track {
+    height: 2px;
+    background: #1acc11; /* White color for the track */
+    border-radius: 2px;
+}
+
+/* Click effect for the audio bar */
+.audio-bar-clicked {
+    background-color: rgb(255, 255, 255); /* Slight color change */
+    transition: background-color 0.2s;
+    box-shadow: 0 0 10px rgb(255, 255, 255); /* Highlight effect */
+}
+
+.audio-container {
+    position: absolute;
+    bottom: 60px; /* Distance from the bottom of the image */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    width: calc(100% - 20px); /* Ensure the container fits within the image */
+    padding: 0 10px;
+}
+
+.audio-time {
+    font-size: 8px;
+    color: #fff;
+    width: 20px; /* Adjust width to accommodate time text */
+    text-align: center;
+}
+
+.audio-bar-container {
+    display: flex;
+    flex-grow: 1; /* Allows the audio bar to expand */
+    align-items: center;
+    margin: 0 10px; /* Adjust margin to increase space between time elements and audio bar */
+}
+
+.audio-bar {
+    flex-grow: 1;
+}
+
+.audio-icon {
+    position: absolute;
+    top: 85%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center icon perfectly */
+    font-size: 24px; /* Size of the icon */
+    color: #fff; /* Icon color */
+    z-index: 15; /* Ensure the icon appears above the image */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: opacity 0.2s; /* Smooth transition for visibility */
+}
+
+.image-wrapper:hover .audio-icon {
+    opacity: 1; /* Show icon on hover */
+}
+
+/* Initially show the icon */
+.audio-icon {
+    opacity: 1;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .audio-bar {
+        width: 80%; /* Slightly increase width for better visibility */
+        height: 2px; /* Keep the same height */
+    }
+
+    .audio-container {
+        bottom: 50px; /* Adjust distance from the bottom for tablets */
+        width: calc(100% - 30px); /* Adjust container width */
+    }
+
+    .audio-time {
+        font-size: 7px; /* Slightly smaller font for time */
+    }
+
+    .audio-icon {
+        font-size: 20px; /* Slightly smaller icon */
+        top: 80%; /* Adjust vertical position */
+    }
+}
+
+@media (max-width: 480px) {
+    .audio-bar {
+        width: 90%; /* Maximize width within the image */
+        height: 2px; /* Keep height the same */
+    }
+
+    .audio-container {
+        bottom: 40px; /* Adjust distance from the bottom for smaller screens */
+        width: calc(100% - 20px); /* Adjust container width for mobile */
+    }
+
+    .audio-time {
+        font-size: 6px; /* Smaller font size for time on mobile */
+    }
+
+    .audio-icon {
+        font-size: 18px; /* Smaller icon */
+        top: 75%; /* Adjust vertical position */
+    }
+}
+
+
+/* Navigation Buttons */
+.swiper-button-next, .swiper-button-prev {
+    background-color: rgb(255, 255, 255);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.swiper-button-next::after, .swiper-button-prev::after {
+    font-size: 20px;
+}
