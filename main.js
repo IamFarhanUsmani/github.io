@@ -18,8 +18,17 @@ const swiper = new Swiper('.swiper-container', {
 }
 });
 
-// Play/Pause functionality for audio on image click
+// Play/Pause functionality for audio on image click (only if the slide is active)
 function toggleAudio(audioId, imgElement) {
+    const swiperSlide = imgElement.closest('.swiper-slide');
+    
+    // Check if the image is inside the active slide
+    if (!swiperSlide.classList.contains('swiper-slide-active')) {
+        console.log('Image is not in the center, click is disabled.');
+        return; // Prevent play/pause if the image is not in the center
+    }
+
+    // Existing play/pause logic
     const audio = document.getElementById(audioId);
     const progressBar = document.getElementById(`audio-bar${audioId.replace('audio', '')}`);
     const icon = document.getElementById(`play-pause-icon${audioId.replace('audio', '')}`);
