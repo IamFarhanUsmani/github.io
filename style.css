@@ -71,6 +71,27 @@ body {
 }
 
 @media (max-width: 480px) {
+
+    /* Decrease the height of the swiper-container */
+    .swiper-container {
+        height: 220px !important; /* Force the container to a smaller height */
+    }
+
+    /* Ensure the swiper-wrapper fits within the container */
+    .swiper-wrapper {
+        height: 100% !important; /* Make sure it takes up the entire container */
+        display: flex; /* Ensure the slides are still aligned in a row */
+        align-items: center; /* Center align the slides vertically */
+    }
+
+    /* Each slide must take up the full height of the container */
+    .swiper-slide {
+        height: 100% !important; /* Force slides to match the container height */
+        display: flex; /* Flexbox to center the image vertically */
+        justify-content: center;
+        align-items: center;
+    }
+    
     /* Square size for the active image */
     .swiper-slide-active .image-wrapper {
         width: 150px;  /* Active image stays full size */
