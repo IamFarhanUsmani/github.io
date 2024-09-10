@@ -71,6 +71,36 @@ body {
 }
 
 @media (max-width: 480px) {
+    /* Square size for the active image */
+    .swiper-slide-active .image-wrapper {
+        width: 150px;  /* Active image stays full size */
+        height: 150px;
+    }
+
+    .swiper-slide-active img {
+        width: 100%;   /* Active image fills the square */
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Reduce size of blurred images to half */
+    .swiper-slide {
+        transform: scale(0.5); /* Shrink blurred images */
+    }
+
+    /* Blurred image wrapper still square, but reduced */
+    .swiper-slide:not(.swiper-slide-active) .image-wrapper {
+        width: 75px;  /* Half the size of the active image */
+        height: 75px;
+    }
+
+    /* Blurred images stay square */
+    .swiper-slide:not(.swiper-slide-active) img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
     .episode-title {
         font-size: 14px; 
     }
@@ -265,7 +295,7 @@ body {
     }
 
     .audio-container {
-        bottom: 60px; /* Adjust distance from the bottom for smaller screens */
+        bottom: 25px; /* Adjust distance from the bottom for smaller screens */
         width: calc(100% - 20px); /* Adjust container width for mobile */
     }
 
@@ -275,7 +305,7 @@ body {
 
     .audio-icon {
         font-size: 18px; /* Smaller icon */
-        top: 85%; /* Adjust vertical position */
+        top: 90%; /* Adjust vertical position */
     }
 }
 
