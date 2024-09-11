@@ -40,7 +40,7 @@ body {
     margin-bottom: 10px; /* Space below the title */
     position: relative;
     display: block;
-    margin-top: 20px; /* Adjust distance from the image */
+    margin-top: 0px; /* Adjust distance from the image */
     background: transparent; /* Transparent background */
     color: #fff; /* White text color */
 }
