@@ -26,12 +26,25 @@
     <div class="swiper-container">
         <div class="swiper-wrapper">
 
-            <!-- Episode 9 -->
-
-            <!-- Episode 8 -->
-                        
-            <!-- Episode 7 -->
+            <!-- Episode 5 -->
+            <div class="swiper-slide">
+                <!-- Episode title moved outside of image-wrapper -->
+                <div class="episode-title">Episode 5</div> 
             
+                <div class="image-wrapper">
+                    <img src="gulz1.png" alt="Episode 5" onclick="toggleAudio('audio5', this)">
+                    <i id="play-pause-icon5" class="fa fa-play audio-icon" onclick="toggleAudio('audio5', this)"></i> <!-- Play/Pause icon -->
+                    <div class="audio-container">
+                        <span id="start-time5" class="audio-time">00:00</span>
+                        <div class="audio-bar-container">
+                            <input type="range" class="audio-bar" id="audio-bar5" value="0" onchange="setAudioTime('audio5', this.value)">
+                        </div>
+                        <span id="end-time5" class="audio-time">00:00</span>
+                    </div>
+                </div>
+                <audio id="audio5" src="https://dl.dropbox.com/scl/fi/g3a161fd3tcrlld2fcunr/zedep05.mp3?rlkey=kh32chp5vpuqh472b6k3s0r2l&st=drb5rysb&dl=0"></audio>
+            </div>
+
             <!-- Episode 6 -->
             <div class="swiper-slide">
                 <!-- Episode title moved outside of image-wrapper -->
@@ -51,29 +64,15 @@
                 <audio id="audio6" src="https://dl.dropbox.com/scl/fi/nd391hlvf3h8iqdzc7pby/zedEP6.mp3?rlkey=bd7b28vhftli3u8p6a784gamp&st=1xw6nmzc&dl=0"></audio>
             </div>
 
-            <!-- Episode 5 -->
-            <div class="swiper-slide">
-                <!-- Episode title moved outside of image-wrapper -->
-                <div class="episode-title">Episode 5</div> 
-            
-                <div class="image-wrapper">
-                    <img src="gulz1.png" alt="Episode 5" onclick="toggleAudio('audio5', this)">
-                    <i id="play-pause-icon5" class="fa fa-play audio-icon" onclick="toggleAudio('audio5', this)"></i> <!-- Play/Pause icon -->
-                    <div class="audio-container">
-                        <span id="start-time5" class="audio-time">00:00</span>
-                        <div class="audio-bar-container">
-                            <input type="range" class="audio-bar" id="audio-bar5" value="0" onchange="setAudioTime('audio5', this.value)">
-                        </div>
-                        <span id="end-time5" class="audio-time">00:00</span>
-                    </div>
-                </div>
-                <audio id="audio5" src="https://dl.dropbox.com/scl/fi/g3a161fd3tcrlld2fcunr/zedep05.mp3?rlkey=kh32chp5vpuqh472b6k3s0r2l&st=drb5rysb&dl=0"></audio>
-            </div>
-          
+            <!-- Episode 7 -->
+
+            <!-- Episode 8 -->
+
+            <!-- Episode 9 -->
+                        
             <!-- Add more episodes here... -->
 
         </div>
-
         <!-- Navigation buttons -->
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
