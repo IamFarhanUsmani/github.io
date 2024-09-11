@@ -3,7 +3,7 @@ const swiper = new Swiper('.swiper-container', {
     slidesPerView: 3,        // Display 1 active, 1 previous, 1 next
     centeredSlides: true,     // Always center the active slide
     spaceBetween: 30,         // Space between slides
-    loop: true,               // Loop through slides
+    //loop: true,               // Loop through slides
     initialSlide: 1,  // Center latest Episode
     navigation: {
         nextEl: '.swiper-button-next',
