@@ -13,7 +13,7 @@ const swiper = new Swiper('.swiper-container', {
         el: '.swiper-pagination',
         clickable: true,
     },
-    effect: "swipe",   // Slide effect (can use 'fade' or 'cube')
+    effect: "cube",   // Slide effect (can use 'fade' or 'cube', swipe)
     keyboard: {
         enabled: true,
 }
