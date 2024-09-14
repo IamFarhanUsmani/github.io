@@ -143,7 +143,24 @@
                 <audio id="audio6" src="https://storage.googleapis.com/zabaanedil-audio-files/zedEP6.mp3"></audio>
             </div>
 
-            <!-- Coming Soon Episode 7 -->
+            <!-- Episode 7 -->
+            <div class="swiper-slide">
+                <div class="episode-title">Episode 7</div>
+                <div class="image-wrapper">
+                    <img src="ep7.png" alt="Episode 7" onclick="toggleAudio('audio7', this)">
+                    <i id="play-pause-icon7" class="fa fa-play audio-icon" onclick="toggleAudio('audio7', this)"></i>
+                    <div class="audio-container">
+                        <span id="start-time7" class="audio-time">00:00</span>
+                        <div class="audio-bar-container">
+                            <input type="range" class="audio-bar" id="audio-bar7" value="0" onchange="setAudioTime('audio7', this.value)">
+                        </div>
+                        <span id="end-time7" class="audio-time">00:00</span>
+                    </div>
+                </div>
+                <audio id="audio7" src="https://storage.googleapis.com/zabaanedil-audio-files/ZED7-Kaifi%20Part1.mp3"></audio>
+            </div>
+
+            <!-- Coming Soon -->
             <div class="swiper-slide">
                 <!-- Episode title moved outside of image-wrapper -->
                 <div class="episode-title">Next Episode</div> 
