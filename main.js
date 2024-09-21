@@ -131,8 +131,6 @@ function startTickerAnimation() {
   requestAnimationFrame(animate);
 }
 
-document.addEventListener('DOMContentLoaded', loadCommentsTicker);
-
 // Load comments initially and set interval to refresh
 document.addEventListener('DOMContentLoaded', () => {
   loadCommentsTicker();
