@@ -508,28 +508,25 @@ body {
     left: 100%;
     color: #fff;
     font-size: 18px;
-    animation: ticker-scroll 80s linear infinite; /* Slower animation duration */
-    animation-play-state: paused; /* Initially paused */
+    animation: ticker-scroll linear infinite; /* Infinite scrolling */
+    animation-play-state: running;
 }
 
-#comments-ticker.start-animation {
-    animation-play-state: running; /* Start animation when the class is added */
+/* Infinite loop scrolling without gaps */
+@keyframes ticker-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Scroll half of the container's width */
+    }
 }
 
+/* Ticker item styling */
 .ticker-item {
     font-family: 'Georgia', serif;
     font-size: 18px;
     color: #fefefe;
     margin-right: 50px; /* Space between comments */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-/* Keyframes for ticker scrolling */
-@keyframes ticker-scroll {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
 }
