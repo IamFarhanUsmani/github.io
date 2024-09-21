@@ -131,7 +131,7 @@ body {
     .comment-btn {
         font-size: 12px;
         width: 180px;   /* Adjusted width for mobile */
-        bottom: 230px;   /* Further reduced space for mobile */
+        bottom: 110px;   /* Further reduced space for mobile */
         padding: 6px 12px;
     }
 }
@@ -496,7 +496,7 @@ body {
 
 @media (max-width: 480px) {
     #comments-ticker-container {
-        bottom: 150px;  /* Adjust space from the bottom for mobile */
+        bottom: 50px;  /* Adjust space from the bottom for mobile */
     }
 
     .ticker-item {
