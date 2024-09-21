@@ -83,6 +83,7 @@ const scriptURL = 'https://script.google.com/macros/s/AKfycbx2UMxV0iYHbpoPhoH1OF
 let comments = [];
 
 function loadCommentsTicker() {
+    populateTickerPlaceholder(); // Show placeholder immediately
     fetchComments();
 }
 
@@ -91,14 +92,26 @@ function fetchComments() {
         .then(response => response.json())
         .then(data => {
             comments = [...data];
-            populateTicker(); // Populate the ticker with comments
+            populateTicker(); // Populate the ticker with fetched comments
         })
         .catch(error => console.error('Error fetching comments:', error));
 }
 
+function populateTickerPlaceholder() {
+    const tickerContainer = document.getElementById('comments-ticker');
+    tickerContainer.innerHTML = ''; // Clear previous items
+
+    const placeholderElement = document.createElement('div');
+    placeholderElement.classList.add('ticker-item');
+    placeholderElement.innerHTML = 'Loading comments...'; // Placeholder text
+    tickerContainer.appendChild(placeholderElement);
+
+    tickerContainer.classList.add('start-animation'); // Start animation immediately
+}
+
 function populateTicker() {
     const tickerContainer = document.getElementById('comments-ticker');
-    tickerContainer.innerHTML = ''; // Clear previous ticker items
+    tickerContainer.innerHTML = ''; // Clear previous items or placeholder
 
     comments.slice().reverse().forEach(comment => {
         const commentElement = document.createElement('div');
@@ -107,15 +120,29 @@ function populateTicker() {
         tickerContainer.appendChild(commentElement);
     });
 
-    // Delay the start of the animation by 3 seconds
-    setTimeout(() => {
-        tickerContainer.classList.add('start-animation'); // Add the class to start animation
-    }, 3000); // 3-second delay before animation starts
+    duplicateTickerContent(tickerContainer); // Duplicate content for seamless loop
+    adjustTickerSpeed(tickerContainer); // Adjust speed dynamically
+    tickerContainer.classList.add('start-animation'); // Ensure animation starts with new data
+}
+
+// Dynamically adjust the speed based on the length of the ticker content
+function adjustTickerSpeed(tickerContainer) {
+    const contentLength = tickerContainer.scrollWidth; // Get the total width of the content
+    const screenWidth = window.innerWidth;
+    const speedFactor = 10; // Adjust this factor to slow down the ticker speed (higher value = slower)
+    const duration = Math.max(contentLength / screenWidth * speedFactor, 40); // Minimum 40 seconds for readability
+
+    tickerContainer.style.animationDuration = `${duration}s`; // Apply dynamic speed
+}
+
+// Duplicate content for seamless looping
+function duplicateTickerContent(tickerContainer) {
+    const originalContent = tickerContainer.innerHTML;
+    tickerContainer.innerHTML += originalContent; // Duplicate the ticker content
 }
 
 // Load the ticker on DOMContentLoaded
-document.addEventListener('DOMContentLoaded', loadCommentsTicker);
-  
+document.addEventListener('DOMContentLoaded', loadCommentsTicker);  
 
 // Play/Pause functionality for audio on image click (only if the slide is active)
 function toggleAudio(audioId, imgElement) {
