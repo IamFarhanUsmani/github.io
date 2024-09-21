@@ -59,7 +59,7 @@ document.getElementById("comment-form").addEventListener("submit", function(even
   }
 
   // Post data to Google Apps Script
-  var scriptURL = 'https://script.google.com/macros/s/AKfycbxqnQ_gr4CB77NRECBANLZ7qpd_hyGmxQz0278Guwn6ekJVDBTVs_SASi4G1c88g7OFQw/exec'; // Replace with your Apps Script URL
+  var scriptURL = 'https://script.google.com/macros/s/AKfycbx2UMxV0iYHbpoPhoH1OF_77MemdRN_ezEqU0asyHMGl8AhaBarcY18yE8vkTab5UCGcQ/exec'; // Replace with your Apps Script URL
   var params = new URLSearchParams({
     'comment': commentText,
     'name': commentName
@@ -77,6 +77,62 @@ document.getElementById("comment-form").addEventListener("submit", function(even
       console.error('Error:', error);
     });
 });
+
+// Ticker
+function loadCommentsTicker() {
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbx2UMxV0iYHbpoPhoH1OF_77MemdRN_ezEqU0asyHMGl8AhaBarcY18yE8vkTab5UCGcQ/exec';  // Replace with your Apps Script URL
+    
+    fetch(scriptURL)
+    .then(response => response.json())
+    .then(data => {
+      const tickerContainer = document.getElementById('comments-ticker');
+      tickerContainer.innerHTML = '';  // Clear existing comments
+
+      // Add comments to the ticker
+      data.forEach(comment => {
+        const commentElement = document.createElement('div');
+        commentElement.classList.add('ticker-item');
+        commentElement.innerHTML = `<strong>${comment.name}:</strong> ${comment.comment}`;
+        tickerContainer.appendChild(commentElement);
+      });
+
+      // Clone the comments for looping
+      const clone = tickerContainer.cloneNode(true);
+      tickerContainer.parentElement.appendChild(clone);
+
+      // Start the ticker animation
+      startTickerAnimation();
+    })
+    .catch(error => {
+      console.error('Error fetching comments:', error);
+    });
+}
+
+function startTickerAnimation() {
+  const ticker = document.getElementById('comments-ticker');
+  const tickerClone = ticker.nextElementSibling;  // The cloned ticker for looping
+
+  let tickerWidth = ticker.scrollWidth;
+  let tickerPosition = 0;
+
+  function animate() {
+    tickerPosition -= 1;  // Move the ticker by 1px to the left
+    ticker.style.transform = `translateX(${tickerPosition}px)`;
+    tickerClone.style.transform = `translateX(${tickerPosition + tickerWidth}px)`;  // Position the clone right after the original
+
+    // Reset position if both tickers have moved off-screen
+    if (tickerPosition <= -tickerWidth) {
+      tickerPosition = 0;
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  requestAnimationFrame(animate);
+}
+
+document.addEventListener('DOMContentLoaded', loadCommentsTicker);
+  
 
 // Play/Pause functionality for audio on image click (only if the slide is active)
 function toggleAudio(audioId, imgElement) {
