@@ -100,10 +100,11 @@ body {
     font-size: 16px;
     cursor: pointer;
     position: fixed; /* Keeps the button fixed at the bottom */
-    bottom: 20px;    /* Distance from the bottom of the page */
+    bottom: 80px;    /* Distance from the bottom of the page */
     left: 50%;       /* Center the button horizontally */
     transform: translateX(-50%); /* Adjust to perfectly center it */
     z-index: 100;    /* Ensure it appears above other content */
+    width: 248px;
 }
 
 .comment-btn:hover {
@@ -423,3 +424,34 @@ body {
 .swiper-button-next::after, .swiper-button-prev::after {
     font-size: 20px;
 }
+
+/* Ticker Container */
+#comments-ticker-container {
+    width: 100%;
+    position: absolute;
+    bottom: 0; /* Position at the bottom of the swiper container */
+    left: 0;
+    z-index: 10; /* Ensure it appears above the Swiper slides but below the navigation buttons */
+    /*background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 10px 0;
+    height: 40px; /* Adjust height as needed */
+    overflow: hidden;
+  }
+  
+  /* Ticker items */
+  #comments-ticker {
+    display: flex;
+    white-space: nowrap;
+    position: absolute;
+    left: 100%;
+    color: #fff; /* White text for contrast */
+    font-size: 14px;
+  }
+  
+  .ticker-item {
+    display: inline-block;
+    padding: 0 50px;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+  
