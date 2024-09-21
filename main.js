@@ -79,48 +79,64 @@ document.getElementById("comment-form").addEventListener("submit", function(even
 });
 
 // Ticker
-function loadCommentsTicker() {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbx2UMxV0iYHbpoPhoH1OF_77MemdRN_ezEqU0asyHMGl8AhaBarcY18yE8vkTab5UCGcQ/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbx2UMxV0iYHbpoPhoH1OF_77MemdRN_ezEqU0asyHMGl8AhaBarcY18yE8vkTab5UCGcQ/exec';
+let tickerContainer;
+let comments = [];
+let isAnimating = false;
 
+function loadCommentsTicker() {
+    tickerContainer = document.getElementById('comments-ticker');
+    fetchComments();
+}
+
+function fetchComments() {
     fetch(scriptURL)
         .then(response => response.json())
         .then(data => {
-            const tickerContainer = document.getElementById('comments-ticker');
-            tickerContainer.innerHTML = ''; // Clear existing comments
-
-            // Add space between the comments using a CSS class
-            data.forEach(comment => {
-                const commentElement = document.createElement('div');
-                commentElement.classList.add('ticker-item');
-                commentElement.innerHTML = `<strong>${comment.name}:</strong> ${comment.comment}`;
-                tickerContainer.appendChild(commentElement);
-            });
-
-            // Clone the ticker for looping
-            const clone = tickerContainer.cloneNode(true);
-            tickerContainer.parentElement.appendChild(clone);
-
-            // Start the ticker animation
-            startTickerAnimation();
+            // Add new comments to the existing array
+            comments = [...data]; // Replace with new comments
+            if (!isAnimating) {
+                startTickerAnimation();
+            }
         })
         .catch(error => console.error('Error fetching comments:', error));
 }
 
 function startTickerAnimation() {
-    const ticker = document.getElementById('comments-ticker');
-    const tickerClone = ticker.nextElementSibling;
+    if (comments.length === 0) return; // Ensure there are comments to display
+    isAnimating = true; // Set the flag to indicate animation is in progress
 
-    let tickerWidth = ticker.scrollWidth; // Get total width of ticker
+    // Clear existing ticker items
+    tickerContainer.innerHTML = '';
+
+    // Create ticker items from the comments array, starting with the latest
+    comments.slice().reverse().forEach(comment => { // Reverse to show latest first
+        const commentElement = document.createElement('div');
+        commentElement.classList.add('ticker-item');
+        commentElement.innerHTML = `<strong>${comment.name}:</strong> ${comment.comment}`;
+        tickerContainer.appendChild(commentElement);
+    });
+
+    // Clone the ticker for looping
+    const tickerClone = tickerContainer.cloneNode(true);
+    tickerContainer.parentElement.appendChild(tickerClone);
+
+    let tickerWidth = tickerContainer.scrollWidth; // Get total width of ticker
     let tickerPosition = 0;
 
     function animate() {
         tickerPosition -= 1; // Move the ticker left by 1px
-        ticker.style.transform = `translateX(${tickerPosition}px)`;
+        tickerContainer.style.transform = `translateX(${tickerPosition}px)`;
         tickerClone.style.transform = `translateX(${tickerPosition + tickerWidth}px)`; // Position the clone after the original
 
         // Reset only after the entire ticker scrolls off-screen
         if (tickerPosition <= -tickerWidth) {
             tickerPosition = 0;
+            tickerContainer.remove(); // Remove the original ticker
+            tickerClone.style.transform = 'translateX(0)'; // Reset clone for the next animation
+            isAnimating = false; // Reset the animation flag
+            // Optionally fetch new comments after animation is complete
+            fetchComments();
         }
 
         requestAnimationFrame(animate);
