@@ -129,7 +129,7 @@ function populateTicker() {
 function adjustTickerSpeed(tickerContainer) {
     const contentLength = tickerContainer.scrollWidth; // Get the total width of the content
     const screenWidth = window.innerWidth;
-    const speedFactor = 10; // Adjust this factor to slow down the ticker speed (higher value = slower)
+    const speedFactor = 15; // Adjust this factor to slow down the ticker speed (higher value = slower)
     const duration = Math.max(contentLength / screenWidth * speedFactor, 40); // Minimum 40 seconds for readability
 
     tickerContainer.style.animationDuration = `${duration}s`; // Apply dynamic speed
