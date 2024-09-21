@@ -170,7 +170,7 @@ body {
         background-size: cover; /* Change to cover to ensure it fills the viewport without distortion */
         background-position: center;
         height: auto; /* Change to auto to allow content to define the height */
-        max-height: 80vh; /* Ensure it still takes up the full viewport height */
+        min-height: 100vh; /* Ensure it still takes up the full viewport height */
         overflow-y: auto; /* Allow vertical scrolling if content overflows */
     }
 
