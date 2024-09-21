@@ -105,17 +105,38 @@ body {
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    position: fixed; /* Keeps the button fixed at the bottom */
-    bottom: 80px;    /* Distance from the bottom of the page */
-    left: 50%;       /* Center the button horizontally */
-    transform: translateX(-50%); /* Adjust to perfectly center it */
-    z-index: 100;    /* Ensure it appears above other content */
+    position: absolute; /* Absolute positioning for bottom placement */
+    bottom: 80px;       /* Add some space between the button and the bottom of the screen */
+    left: 50%;          /* Center the button horizontally */
+    transform: translateX(-50%); /* Center it properly */
+    z-index: 100;
     width: 248px;
 }
 
 .comment-btn:hover {
     background-color: gray;
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .comment-btn {
+        font-size: 14px;
+        width: 220px;   /* Adjusted width for tablet screens */
+        bottom: 130px;   /* Reduced space for smaller screens */
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .comment-btn {
+        font-size: 12px;
+        width: 180px;   /* Adjusted width for mobile */
+        bottom: 230px;   /* Further reduced space for mobile */
+        padding: 6px 12px;
+    }
+}
+
+
 
 
 /* Episode title styling */
@@ -435,7 +456,7 @@ body {
 #comments-ticker-container {
     width: 100%;
     position: absolute;
-    bottom: 0;
+    bottom: 20px;  /* Adjust this value to change space above the bottom */
     left: 0;
     z-index: 10;
     padding: 10px 0;
@@ -463,14 +484,24 @@ body {
 
 /* Responsive styling */
 @media (max-width: 768px) {
+    #comments-ticker-container {
+        bottom: 50px;  /* Adjust space from the bottom for tablets */
+    }
+    
     .ticker-item {
         font-size: 16px; /* Smaller font for tablets */
+        margin-right: 40px; /* Adjust space between comments for tablets */
     }
 }
 
 @media (max-width: 480px) {
+    #comments-ticker-container {
+        bottom: 150px;  /* Adjust space from the bottom for mobile */
+    }
+
     .ticker-item {
         font-size: 14px; /* Smaller font for mobile */
-        margin-right: 20px; /* Reduce space between comments */
+        margin-right: 20px; /* Reduce space between comments for mobile */
     }
 }
+
