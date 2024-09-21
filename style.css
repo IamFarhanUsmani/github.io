@@ -456,7 +456,7 @@ body {
 #comments-ticker-container {
     width: 100%;
     position: absolute;
-    bottom: 20px;  /* Adjust this value to change space above the bottom */
+    bottom: 50px; /* Adjustable space above the bottom of the screen */
     left: 0;
     z-index: 10;
     padding: 10px 0;
@@ -482,26 +482,26 @@ body {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Responsive styling */
+/* Responsive styling for tablets */
 @media (max-width: 768px) {
     #comments-ticker-container {
-        bottom: 50px;  /* Adjust space from the bottom for tablets */
+        bottom: 40px; /* Adjust the space above the bottom on tablets */
     }
-    
+
     .ticker-item {
         font-size: 16px; /* Smaller font for tablets */
-        margin-right: 40px; /* Adjust space between comments for tablets */
+        margin-right: 40px; /* Adjust space between comments */
     }
 }
 
+/* Responsive styling for mobile (iPhone and Android) */
 @media (max-width: 480px) {
     #comments-ticker-container {
-        bottom: 50px;  /* Adjust space from the bottom for mobile */
+        bottom: 30px; /* Adjust the space above the bottom on mobile */
     }
 
     .ticker-item {
         font-size: 14px; /* Smaller font for mobile */
-        margin-right: 20px; /* Reduce space between comments for mobile */
+        margin-right: 20px; /* Reduce space between comments */
     }
 }
-
