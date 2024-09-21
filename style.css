@@ -32,6 +32,85 @@ body {
     display: block;
 }
 
+/* Comment Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style for comment form */
+#comment-form textarea,
+#comment-form input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+#comment-form button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+#comment-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Comment Button Styling */
+.comment-btn {
+    padding: 10px 20px;
+    background-color: #fff;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    position: fixed; /* Keeps the button fixed at the bottom */
+    bottom: 20px;    /* Distance from the bottom of the page */
+    left: 50%;       /* Center the button horizontally */
+    transform: translateX(-50%); /* Adjust to perfectly center it */
+    z-index: 100;    /* Ensure it appears above other content */
+}
+
+.comment-btn:hover {
+    background-color: gray;
+}
+
+
 /* Episode title styling */
 .episode-title {
     font-family: 'Roboto', sans-serif; /* Sleek font style */
@@ -91,7 +170,7 @@ body {
         justify-content: center;
         align-items: center;
     }
-    
+
     /* Square size for the active image */
     .swiper-slide-active .image-wrapper {
         width: 150px;  /* Active image stays full size */
@@ -295,7 +374,7 @@ body {
     }
 
     .audio-container {
-        bottom: 50px; /* Adjust distance from the bottom for tablets */
+        bottom: 30px; /* Adjust distance from the bottom for tablets */
         width: calc(100% - 30px); /* Adjust container width */
     }
 
@@ -328,6 +407,7 @@ body {
         font-size: 18px; /* Smaller icon */
         top: 90%; /* Adjust vertical position */
     }
+
 }
 
 
