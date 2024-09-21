@@ -78,14 +78,11 @@ document.getElementById("comment-form").addEventListener("submit", function(even
     });
 });
 
-// Ticker
+// Ticker URL and Data
 const scriptURL = 'https://script.google.com/macros/s/AKfycbx2UMxV0iYHbpoPhoH1OF_77MemdRN_ezEqU0asyHMGl8AhaBarcY18yE8vkTab5UCGcQ/exec';
-let tickerContainer;
 let comments = [];
-let isAnimating = false;
 
 function loadCommentsTicker() {
-    tickerContainer = document.getElementById('comments-ticker');
     fetchComments();
 }
 
@@ -93,58 +90,30 @@ function fetchComments() {
     fetch(scriptURL)
         .then(response => response.json())
         .then(data => {
-            // Add new comments to the existing array
-            comments = [...data]; // Replace with new comments
-            if (!isAnimating) {
-                startTickerAnimation();
-            }
+            comments = [...data];
+            populateTicker(); // Populate the ticker with comments
         })
         .catch(error => console.error('Error fetching comments:', error));
 }
 
-function startTickerAnimation() {
-    if (comments.length === 0) return; // Ensure there are comments to display
-    isAnimating = true; // Set the flag to indicate animation is in progress
+function populateTicker() {
+    const tickerContainer = document.getElementById('comments-ticker');
+    tickerContainer.innerHTML = ''; // Clear previous ticker items
 
-    // Clear existing ticker items
-    tickerContainer.innerHTML = '';
-
-    // Create ticker items from the comments array, starting with the latest
-    comments.slice().reverse().forEach(comment => { // Reverse to show latest first
+    comments.slice().reverse().forEach(comment => {
         const commentElement = document.createElement('div');
         commentElement.classList.add('ticker-item');
         commentElement.innerHTML = `<strong>${comment.name}:</strong> ${comment.comment}`;
         tickerContainer.appendChild(commentElement);
     });
 
-    // Clone the ticker for looping
-    const tickerClone = tickerContainer.cloneNode(true);
-    tickerContainer.parentElement.appendChild(tickerClone);
-
-    let tickerWidth = tickerContainer.scrollWidth; // Get total width of ticker
-    let tickerPosition = 0;
-
-    function animate() {
-        tickerPosition -= 1; // Move the ticker left by 1px
-        tickerContainer.style.transform = `translateX(${tickerPosition}px)`;
-        tickerClone.style.transform = `translateX(${tickerPosition + tickerWidth}px)`; // Position the clone after the original
-
-        // Reset only after the entire ticker scrolls off-screen
-        if (tickerPosition <= -tickerWidth) {
-            tickerPosition = 0;
-            tickerContainer.remove(); // Remove the original ticker
-            tickerClone.style.transform = 'translateX(0)'; // Reset clone for the next animation
-            isAnimating = false; // Reset the animation flag
-            // Optionally fetch new comments after animation is complete
-            fetchComments();
-        }
-
-        requestAnimationFrame(animate);
-    }
-
-    requestAnimationFrame(animate);
+    // Delay the start of the animation by 3 seconds
+    setTimeout(() => {
+        tickerContainer.classList.add('start-animation'); // Add the class to start animation
+    }, 3000); // 3-second delay before animation starts
 }
 
+// Load the ticker on DOMContentLoaded
 document.addEventListener('DOMContentLoaded', loadCommentsTicker);
   
 
