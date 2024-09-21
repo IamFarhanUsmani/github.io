@@ -132,6 +132,12 @@ function startTickerAnimation() {
 }
 
 document.addEventListener('DOMContentLoaded', loadCommentsTicker);
+
+// Load comments initially and set interval to refresh
+document.addEventListener('DOMContentLoaded', () => {
+  loadCommentsTicker();
+  setInterval(loadCommentsTicker, 5000);  // Fetch new comments every 5 seconds
+});
   
 
 // Play/Pause functionality for audio on image click (only if the slide is active)
@@ -256,75 +262,4 @@ document.querySelectorAll('input[type="range"]').forEach(range => {
         setAudioTime(audioId, event.target.value);
     });
 });
-
-// Add comment for common comment section
-function addCommentCommon(user = 'Anonymous') {
-    const comment = document.getElementById('comment-text').value;
-    if (!comment) return;
-
-    const url = 'https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbx8LmrK6awHO0hLtcWcCN4URuAPdusHLGZzTUlOgtc/dev/exec';
-    const params = new URLSearchParams({
-        action: 'addComment',
-        episode: 'common', // Unique identifier for common comments
-        comment: comment,
-        user: user
-    });
-
-    fetch(url + '?' + params.toString(), { method: 'POST' })
-        .then(response => response.text())
-        .then(data => {
-            console.log('Comment added:', data);
-            loadCommonComments(); // Refresh comments
-        });
-}
-
-// Load common comments for all episodes
-function loadCommonComments() {
-    const url = 'https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbx8LmrK6awHO0hLtcWcCN4URuAPdusHLGZzTUlOgtc/dev/exec';
-    const params = new URLSearchParams({
-        episode: 'common', // Fetch comments for all episodes
-        action: 'getComments'
-    });
-
-    fetch(url + '?' + params.toString())
-        .then(response => response.json())
-        .then(data => {
-            const commentSection = document.getElementById('comments-common');
-            commentSection.innerHTML = data.map(comment => `<p><strong>${comment[2]}:</strong> ${comment[1]}</p>`).join('');
-        });
-}
-
-// Add reaction for individual episodes
-function addReaction(episode, reaction, user = 'Anonymous') {
-    const url = 'https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbx8LmrK6awHO0hLtcWcCN4URuAPdusHLGZzTUlOgtc/dev/exec';
-    const params = new URLSearchParams({
-        action: 'addReaction',
-        episode: episode,  // Pass the episode number
-        reaction: reaction,
-        user: user
-    });
-
-    fetch(url + '?' + params.toString(), { method: 'POST' })
-        .then(response => response.text())
-        .then(data => {
-            console.log('Reaction added:', data);
-        });
-}
-
-// Load individual comments for each episode (if needed)
-function loadComments(episode) {
-    const url = 'https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbx8LmrK6awHO0hLtcWcCN4URuAPdusHLGZzTUlOgtc/dev/exec';
-    const params = new URLSearchParams({
-        episode: episode,
-        action: 'getComments'
-    });
-
-    fetch(url + '?' + params.toString())
-        .then(response => response.json())
-        .then(data => {
-            const commentSection = document.getElementById(`comments-${episode}`);
-            commentSection.innerHTML = data.map(comment => `<p><strong>${comment[2]}:</strong> ${comment[1]}</p>`).join('');
-        });
-}
-  
 
