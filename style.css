@@ -36,14 +36,14 @@ body {
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 9999;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.8);
     padding-top: 60px;
+    overflow: auto; /* Ensure modal content is scrollable if too long */
 }
 
 .modal-content {
@@ -53,8 +53,10 @@ body {
     border: 1px solid #888;
     width: 80%;
     max-width: 400px;
+    max-height: 80vh; /* Ensure modal doesn't exceed 80% of screen height */
     border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    overflow-y: auto; /* If content inside exceeds the modal's height, scroll */
 }
 
 .close {
@@ -77,31 +79,58 @@ body {
     padding: 10px;
     margin-bottom: 10px;
     font-size: 16px;
-    border: 2px solid #0D0780; /* Darker color for input borders */
-    border-radius: 5px; /* Rounded corners */
+    border: 2px solid #0D0780;
+    border-radius: 5px;
 }
 
 #comment-form button {
-    background-color: #75421D; /* Main button color */
+    background-color: #75421D;
     color: white;
     padding: 10px 15px;
     border: none;
-    border-radius: 5px; /* Rounded corners */
+    border-radius: 5px;
     cursor: pointer;
-    font-weight: bold; /* Bolder text */
+    font-weight: bold;
 }
 
 #comment-form button:hover {
-    background-color: #0D0780; /* Adjust hover color for contrast */
-    opacity: 0.8; /* Slightly change opacity on hover */
+    background-color: #0D0780;
+    opacity: 0.8;
 }
 
 /* Parent Container Styling */
 .parent-container {
-    position: relative; /* Ensure the parent has relative positioning */
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Helps with spacing */
+    justify-content: space-between;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+        padding: 15px;
+        max-height: 75vh; /* Further limit height on smaller screens */
+    }
+
+    #comment-form textarea,
+    #comment-form input {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 90%;
+        padding: 10px;
+        max-height: 70vh; /* Ensure modal stays within screen limits on mobile */
+    }
+
+    #comment-form button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
 }
 
 /* Comment Button Styling */
