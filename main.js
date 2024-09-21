@@ -131,11 +131,7 @@ function startTickerAnimation() {
   requestAnimationFrame(animate);
 }
 
-// Load comments initially and set interval to refresh
-document.addEventListener('DOMContentLoaded', () => {
-  loadCommentsTicker();
-  setInterval(loadCommentsTicker, 5000);  // Fetch new comments every 5 seconds
-});
+document.addEventListener('DOMContentLoaded', loadCommentsTicker);
   
 
 // Play/Pause functionality for audio on image click (only if the slide is active)
