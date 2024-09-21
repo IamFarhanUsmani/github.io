@@ -497,7 +497,7 @@ body {
     padding: 10px 0;
     height: 40px;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Ticker items */
