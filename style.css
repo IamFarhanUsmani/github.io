@@ -96,6 +96,14 @@ body {
     opacity: 0.8; /* Slightly change opacity on hover */
 }
 
+/* Parent Container Styling */
+.parent-container {
+    position: relative; /* Ensure the parent has relative positioning */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Helps with spacing */
+}
+
 /* Comment Button Styling */
 .comment-btn {
     padding: 10px 20px;
@@ -106,11 +114,12 @@ body {
     font-size: 16px;
     cursor: pointer;
     position: absolute; /* Absolute positioning for bottom placement */
-    bottom: 80px;       /* Add some space between the button and the bottom of the screen */
+    bottom: 8vh;       /* Use viewport height for spacing */
     left: 50%;          /* Center the button horizontally */
     transform: translateX(-50%); /* Center it properly */
     z-index: 100;
     width: 248px;
+    margin-bottom: 20px; /* Optional: Add margin for extra space */
 }
 
 .comment-btn:hover {
@@ -122,7 +131,7 @@ body {
     .comment-btn {
         font-size: 14px;
         width: 220px;   /* Adjusted width for tablet screens */
-        bottom: 130px;   /* Reduced space for smaller screens */
+        bottom: 15vh;   /* Adjusted for smaller screens */
         padding: 8px 16px;
     }
 }
@@ -131,13 +140,10 @@ body {
     .comment-btn {
         font-size: 12px;
         width: 180px;   /* Adjusted width for mobile */
-        bottom: 80px;   /* Further reduced space for mobile */
+        bottom: 10vh;   /* Further adjusted for mobile */
         padding: 6px 12px;
     }
 }
-
-
-
 
 /* Episode title styling */
 .episode-title {
