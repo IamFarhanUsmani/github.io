@@ -458,31 +458,19 @@ body {
     font-size: 20px;
 }
 
-/* Ticker Container */
-#comments-ticker-container {
-    width: 100%;
-    position: absolute;
-    bottom: 20px; /* Adjustable space above the bottom of the screen */
-    left: 0;
-    z-index: 10;
-    padding: 10px 0;
-    height: 40px;
-    overflow: hidden;
-}
-
 /* Ticker items */
 #comments-ticker {
     display: flex;
     white-space: nowrap;
     position: absolute;
     left: 100%;
-    color: #fff;
-    font-size: 14px;
+    color: #fefefe; /* Set the color to match ticker items */
+    font-size: 18px; /* Default font size matching .ticker-item */
 }
 
 .ticker-item {
     font-family: 'Georgia', serif;
-    font-size: 18px;
+    font-size: 18px; /* Default font size */
     color: #fefefe;
     margin-right: 50px; /* Adds space between comments */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
@@ -490,26 +478,32 @@ body {
 
 /* Responsive styling for tablets */
 @media (max-width: 768px) {
+    #comments-ticker {
+        font-size: 16px; /* Adjust font size for tablets */
+    }
+
     #comments-ticker-container {
         bottom: 40px; /* Adjust the space above the bottom on tablets */
     }
 
     .ticker-item {
-        font-family: 'Georgia', serif;
-        font-size: 16px; /* Smaller font for tablets */
+        font-size: 16px; /* Consistent font size for tablets */
         margin-right: 40px; /* Adjust space between comments */
     }
 }
 
 /* Responsive styling for mobile (iPhone and Android) */
 @media (max-width: 480px) {
+    #comments-ticker {
+        font-size: 14px; /* Adjust font size for mobile */
+    }
+
     #comments-ticker-container {
         bottom: 30px; /* Adjust the space above the bottom on mobile */
     }
 
     .ticker-item {
-        font-family: 'Georgia', serif;
-        font-size: 14px; /* Smaller font for mobile */
+        font-size: 14px; /* Consistent font size for mobile */
         margin-right: 20px; /* Reduce space between comments */
     }
 }
