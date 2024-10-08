@@ -169,7 +169,7 @@ body {
     .comment-btn {
         font-size: 12px;
         width: 180px;   /* Adjusted width for mobile */
-        bottom: 10vh;   /* Further adjusted for mobile */
+        bottom: 25vh;   /* Further adjusted for mobile */
         padding: 6px 12px;
     }
 }
