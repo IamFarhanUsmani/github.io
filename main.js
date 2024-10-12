@@ -172,6 +172,14 @@ function toggleAudio(audioId, imgElement) {
         // Change icon to pause
         icon.classList.remove('fa-play');
         icon.classList.add('fa-pause');
+
+        // Google Analytics event tracking for audio play
+        gtag('event', 'play', {
+            'event_category': 'Audio',
+            'event_label': audioId, // Track which audio is played (e.g., 'audio1')
+            'value': 1
+        });
+        
     } else {
         audio.pause();
         // Stop updating the progress bar
