@@ -169,7 +169,7 @@ body {
     .comment-btn {
         font-size: 12px;
         width: 180px;   /* Adjusted width for mobile */
-        bottom: 20vh;   /* Further adjusted for mobile */
+        bottom: 15vh;   /* Further adjusted for mobile */
         padding: 6px 12px;
     }
 }
@@ -592,5 +592,19 @@ body {
     .whatsapp-logo {
         width: 20px; /* Smaller icon */
         height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .whatsapp-btn {
+        top: 15px; /* Adjust position on smaller screens */
+        right: 15px;
+        font-size: 12px; /* Slightly smaller font */
+        padding: 4px 6px;
+    }
+
+    .whatsapp-logo {
+        width: 15px; /* Smaller icon */
+        height: 15px;
     }
 }
