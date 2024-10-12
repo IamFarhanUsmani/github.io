@@ -168,7 +168,7 @@ body {
 @media (max-width: 480px) {
     .comment-btn {
         font-size: 12px;
-        width: 180px;   /* Adjusted width for mobile */
+        width: 150px;   /* Adjusted width for mobile */
         bottom: 15vh;   /* Further adjusted for mobile */
         padding: 6px 12px;
     }
