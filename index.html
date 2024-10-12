@@ -249,9 +249,23 @@
                 </div>
                 <audio id="audio91" src=""></audio>
             </div>
-            <!-- Episode 8 -->
 
-            <!-- Episode 9 -->
+            <!-- Episode 12 -->
+            <div class="swiper-slide">
+                <div class="episode-title">Episode 12</div>
+                <div class="image-wrapper">
+                    <img src="ep12.png" alt="Episode 12" onclick="toggleAudio('audio12', this)">
+                    <i id="play-pause-icon12" class="fa fa-play audio-icon" onclick="toggleAudio('audio12', this)"></i>
+                    <div class="audio-container">
+                        <span id="start-time12" class="audio-time">00:00</span>
+                        <div class="audio-bar-container">
+                            <input type="range" class="audio-bar" id="audio-bar12" value="0" onchange="setAudioTime('audio12', this.value)">
+                        </div>
+                        <span id="end-time12" class="audio-time">00:00</span>
+                    </div>
+                </div>
+                <audio id="audio12" src="https://storage.googleapis.com/zabaanedil-audio-files/zed_ep11.mp3"></audio>
+            </div>
                         
             <!-- Add more episodes here... -->
 
@@ -266,7 +280,7 @@
 
         <!-- Ticker inside Swiper container -->
         <div id="comments-ticker-container">
-            <div id="comments-ticker"></div>
+        <div id="comments-ticker"></div>
         </div>
 
     </div>
