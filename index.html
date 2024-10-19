@@ -258,6 +258,23 @@
                 <audio id="audio12" src="https://storage.googleapis.com/zabaanedil-audio-files/ZED12-SAHIR_2.mp3"></audio>
             </div>
 
+            <!-- Episode 13 -->
+            <div class="swiper-slide">
+                <div class="episode-title">Episode 13</div>
+                <div class="image-wrapper">
+                    <img src="ep13.png" alt="Episode 13" onclick="toggleAudio('audio13', this)">
+                    <i id="play-pause-icon13" class="fa fa-play audio-icon" onclick="toggleAudio('audio13', this)"></i>
+                    <div class="audio-container">
+                        <span id="start-time13" class="audio-time">00:00</span>
+                        <div class="audio-bar-container">
+                            <input type="range" class="audio-bar" id="audio-bar13" value="0" onchange="setAudioTime('audio13', this.value)">
+                        </div>
+                        <span id="end-time13" class="audio-time">00:00</span>
+                    </div>
+                </div>
+                <audio id="audio13" src="https://storage.googleapis.com/zabaanedil-audio-files/ZED_EP13.mp3"></audio>
+            </div>
+
             <!-- Coming Soon -->
             <div class="swiper-slide">
                 <!-- Episode title moved outside of image-wrapper -->
