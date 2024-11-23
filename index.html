@@ -343,6 +343,23 @@
                 <audio id="audio17" src="https://storage.googleapis.com/zabaanedil-audio-files/ZABAAN-E-DIL%20_EP17-merged.mp3"></audio>
             </div>
 
+            <!-- Episode 18 -->
+            <div class="swiper-slide">
+                <div class="episode-title">Episode 18</div>
+                <div class="image-wrapper">
+                    <img src="ep18.png" alt="Episode 18" onclick="toggleAudio('audio18', this)">
+                    <i id="play-pause-icon18" class="fa fa-play audio-icon" onclick="toggleAudio('audio18', this)"></i>
+                    <div class="audio-container">
+                        <span id="start-time18" class="audio-time">00:00</span>
+                        <div class="audio-bar-container">
+                            <input type="range" class="audio-bar" id="audio-bar18" value="0" onchange="setAudioTime('audio18', this.value)">
+                        </div>
+                        <span id="end-time18" class="audio-time">00:00</span>
+                    </div>
+                </div>
+                <audio id="audio18" src="https://storage.googleapis.com/zabaanedil-audio-files/ZED18-Daagh.mp3"></audio>
+            </div>
+
             <!-- Coming Soon -->
             <div class="swiper-slide">
                 <!-- Episode title moved outside of image-wrapper -->
