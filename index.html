@@ -394,6 +394,23 @@
                 <audio id="audio20" src="https://storage.googleapis.com/zabaanedil-audio-files/ZED_EP20.mp3"></audio>
             </div>
 
+            <!-- Episode 21 -->
+            <div class="swiper-slide">
+                <div class="episode-title">Episode 21</div>
+                <div class="image-wrapper">
+                    <img src="ep21.png" alt="Episode 21" onclick="toggleAudio('audio21', this)">
+                    <i id="play-pause-icon21" class="fa fa-play audio-icon" onclick="toggleAudio('audio21', this)"></i>
+                    <div class="audio-container">
+                        <span id="start-time21" class="audio-time">00:00</span>
+                        <div class="audio-bar-container">
+                            <input type="range" class="audio-bar" id="audio-bar21" value="0" onchange="setAudioTime('audio21', this.value)">
+                        </div>
+                        <span id="end-time21" class="audio-time">00:00</span>
+                    </div>
+                </div>
+                <audio id="audio21" src="https://storage.googleapis.com/zabaanedil-audio-files/ZED_EP21.mp3"></audio>
+            </div> 
+
             <!-- Coming Soon -->
             <div class="swiper-slide">
                 <!-- Episode title moved outside of image-wrapper -->
