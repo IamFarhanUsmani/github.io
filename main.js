@@ -4,7 +4,7 @@ const swiper = new Swiper('.swiper-container', {
     centeredSlides: true,     // Always center the active slide
     spaceBetween: 30,         // Space between slides
     //loop: true,               // Loop through slides
-    initialSlide: 24,  // Center latest Episode
+    initialSlide: 25,  // Center latest Episode
     navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
